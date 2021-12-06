@@ -1,0 +1,18 @@
+Fitter Status : Successful - Mon Dec 06 13:35:10 2021
+Quartus Prime Version : 20.1.0 Build 711 06/05/2020 Patches 0.02i SJ Lite Edition
+Revision Name : CGoL-Simulation
+Top-level Entity Name : Top
+Family : MAX 10
+Device : 10M50DAF484C6GES
+Timing Models : Preliminary
+Total logic elements : 13,785 / 49,760 ( 28 % )
+    Total combinational functions : 13,757 / 49,760 ( 28 % )
+    Dedicated logic registers : 1,379 / 49,760 ( 3 % )
+Total registers : 1379
+Total pins : 91 / 360 ( 25 % )
+Total virtual pins : 0
+Total memory bits : 0 / 1,677,312 ( 0 % )
+Embedded Multiplier 9-bit elements : 0 / 288 ( 0 % )
+Total PLLs : 2 / 4 ( 50 % )
+UFM blocks : 0 / 1 ( 0 % )
+ADC blocks : 0 / 2 ( 0 % )
