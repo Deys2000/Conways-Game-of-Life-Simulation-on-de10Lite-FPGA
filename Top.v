@@ -35,29 +35,36 @@ module Top(
    inout 		          		GSENSOR_SDO
 	);
 	
-/////////////////////////SWITCH -> LIGHT ////////////////////////////////
-	reg [9:0]sw;
-	always@( SW ) begin
-		sw[9:0] = SW[9:0];		
-	end
-	assign LEDR[9:0] = sw[9:0];	// Light will show if a switch is on (helps with demostration and video purposes)
 
-/////////////////////// CGOL MATRIX ////////////////////////////////////
+///////////////////CONWAY GAME OF LIFE SIMULATION MATRIX SETTINGS////////////////////////////
+	
+	//////////////////////////////////////////////////////////////////////////////////////////
+	// CONWAY GAME OF LIFE - GRID DENSITY ////////////////////////////////////////////////////
+	parameter rows = 30 ;/////////////////////////////////////////////////////////////////////
+	parameter cols = 40 ; // change to modify density of grid/////////////////////////////////
+	parameter matrixIndexLimit = 12; // how many bits to index all cells in matrix?///////////
+	//////////////////////////////////////////////////////////////////////////////////////////	
+
+	// GRID CREATION and INDEXING
+	wire [rows*cols-1:0] matrix;
+	reg [7:0]xindex = 8'd0;	// the indexing for reading from the matrix
+	reg [7:0]yindex = 8'd0;
+	
 	
 	wire [3:0] game_fps;
 	wire game_clk;
 	
 	VariableClockDivider vcd(PB[1], clk, game_clk, game_fps); // CHANGES SPEED BASED ON SELECTION
 	
-	MemoryGrid #(rows, cols, 12) game(	game_clk, 
-													PB[0],		// PRESET SELECTION
+	MemoryGrid #(rows, cols, matrixIndexLimit) game(	game_clk, 
+													SW[1],		//  SELECT PRESET && CLR GRID
 													SW[0],		// GAME ENABLE
-													SW[1], 		// WRITE ENABLE
+													~PB[0] & (SW[9]|SW[1]), 		// WRITE ENABLE (but accelorometer must also be on)
 													write_row,
 													write_col,
 													1,
 													matrix,
-													SW[4:3]);	// PRESET SELECTION
+													SW[5:3]);	// PRESET SELECTION
 	
 	
 	
@@ -109,26 +116,20 @@ module Top(
 	parameter ystart = topEdge + ymargin;
 	parameter yend = bottomEdge - ymargin;
 	
-	// CONWAY GAME OF LIFE - GRID DENSITY 
-	parameter rows = 30 ;
-	parameter cols = 40 ; // change to modify density of grid
+	// VISUAL DIMENSIONS ON SCREEN
 	parameter cell_sizeX = (xend-xstart)/cols; // since 400 is the total vertical length
 	parameter cell_sizeY = (yend-ystart)/rows;
 	
-	// CONWAY GAME OF LIFE GRID and INDEXING
-	wire [rows*cols-1:0] matrix;
-	reg [7:0]xindex = 8'd0;	// the indexing for reading from the matrix
-	reg [7:0]yindex = 8'd0;
-	
-	// ACCELOROMETER SELECTION
+	// ACCELOROMETER CELL SELECTION
 	reg [5:0] write_row, write_col;
 	always @( dataX , dataY) begin
 		write_row = dataY;
 		write_col = dataX;	
 	end
+	reg accel_sel;
 	
-	reg 	accel_sel;
 	
+	// WRITE TO SCREEN VIA RGB REGISTERS
 	always@(posedge clk) begin
 		if( counter_y <  yend 	
 			& counter_y > ystart 
@@ -141,7 +142,7 @@ module Top(
 			accel_sel = (yindex == dataY & xindex == dataX);
 			
 			// DISPLAY VGA COLOR CODE
-			r_red = accel_sel * 4'h9;   
+			r_red = accel_sel * 4'h9 * SW[9]; 
 			r_blue = matrix[(cols*yindex)+(xindex)] * 4'h9;
 			r_green =  4'h0;
 		
@@ -151,21 +152,52 @@ module Top(
 			r_green <= 4'hF;
 		end
 	end
-		// color output assignments
+
 	// only output the colors if the counters are within the adressable video time constraints
 	assign o_red = (counter_x > leftEdge && counter_x <= rightEdge && counter_y > topEdge && counter_y <= bottomEdge) ? r_red : 4'h0;
 	assign o_blue = (counter_x > leftEdge && counter_x <= rightEdge && counter_y > topEdge && counter_y <= bottomEdge) ? r_blue : 4'h0;
 	assign o_green = (counter_x > leftEdge && counter_x <= rightEdge && counter_y > topEdge && counter_y <= bottomEdge) ? r_green : 4'h0;
-	// end color output assignments
 	
 	
-	
+////////////////////////// GENERATION CALCULATOR ////////////////////////
+reg [3:0] onesDigitGenCalc;
+reg [3:0] tensDigitGenCalc;
+
+always@( posedge game_clk) begin
+	if( SW[0] ) begin // SW0 == game enable
+		
+		onesDigitGenCalc  = onesDigitGenCalc == 4'hF ? 0 : onesDigitGenCalc + 4'h1;
+		tensDigitGenCalc  = onesDigitGenCalc == 4'hF ? tensDigitGenCalc + 4'h1 : tensDigitGenCalc;
+		
+	end
+end	
+
+////////////////////////// LIVE CELL COUNTER ///////////////////////////
+
+	reg[3:0] cellCount;
+	reg[matrixIndexLimit : 0] i;
+	always@( posedge game_clk ) begin
+		if( SW[0] ) begin // sw0 = game enable
+			
+			cellCount = 4'h0;
+			i = 0;
+			// some for loop that calculates stuff maybe?
+			
+			for( i = 0; i < rows*cols ; i=i+1 )  begin
+				cellCount = cellCount + matrix[i];
+			end
+		
+		end
+	end
 ////////////////////////// 7 SEGMENT DISPLAYS ///////////////////////////
 	
 	SevenSegEncoder w_row(dataX, HEX5); // write row
 	SevenSegEncoder w_col(dataY, HEX4); // write col waz here
 	
-	// STILL HAVE 3 SEGS AT OUR DISPOSAL (perhaps show cell count?)
+	SevenSegEncoder generationNumberTens ( tensDigitGenCalc, HEX3);
+	SevenSegEncoder generationNumberOnes ( onesDigitGenCalc, HEX2);
+	
+	SevenSegEncoder lifeCount (  cellCount, HEX1);
 	
 	SevenSegEncoder fps_disp(game_fps, HEX0);
 	
@@ -247,12 +279,28 @@ always@( posedge spi_clk ) begin
 	
 end
 
+
+/////////////////////////SWITCH -> LIGHT ////////////////////////////////
+	reg [9:0]sw;
+	always@( SW ) begin
+		sw[9:0] = SW[9:0];		
+	end
+	assign LEDR[9:0] = sw[9:0];	// Light will show if a switch is on (helps with demostration and video purposes)
+
+
 endmodule
+
+
+
+
+
+
+
 
 module AccelClockDivider(cin, cout);			// SEPERATE CLOCK DIVIDER FOr POINTER SPEED
 	input cin;
 	output cout;
-	reg[19:0] count = 32'd0;                // initializing a register count for 32 bits
+	reg[19:0] count = 20'd0;                // initializing a register count for 32 bits
 	parameter D = 32'd50000000;
 
 	always @( posedge cin)                    // make the following code sensitive to change in cin
@@ -264,4 +312,3 @@ module AccelClockDivider(cin, cout);			// SEPERATE CLOCK DIVIDER FOr POINTER SPE
 	assign cout = (count == 0) ? 1'b1 : 1'b0; // if count is < 25 mil, output 0, else 1
 
 endmodule
-

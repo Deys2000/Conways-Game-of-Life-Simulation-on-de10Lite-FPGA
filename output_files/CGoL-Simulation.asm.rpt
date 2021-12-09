@@ -1,6 +1,6 @@
 Assembler report for CGoL-Simulation
-Mon Dec 06 13:35:39 2021
-Quartus Prime Version 20.1.0 Build 711 06/05/2020 Patches 0.02i SJ Lite Edition
+Wed Dec 08 19:15:23 2021
+Quartus Prime Version 20.1.1 Build 720 11/11/2020 Patches 1.02i SJ Lite Edition
 
 
 ---------------------
@@ -10,7 +10,7 @@ Quartus Prime Version 20.1.0 Build 711 06/05/2020 Patches 0.02i SJ Lite Edition
   2. Assembler Summary
   3. Assembler Settings
   4. Assembler Generated Files
-  5. Assembler Device Options: C:/Users/aquadri/Desktop/YorkU/EECS 3201/CGoL-Simulation/output_files/CGoL-Simulation.sof
+  5. Assembler Device Options: C:/Users/stani/Documents/York University/Courses/2021-2022/Fall/EECS 3201 Digital Logic Design/Conways-Game-of-Life-Simulation-on-de10Lite-FPGA/output_files/CGoL-Simulation.sof
   6. Assembler Messages
 
 
@@ -38,7 +38,7 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Mon Dec 06 13:35:39 2021 ;
+; Assembler Status      ; Successful - Wed Dec 08 19:15:23 2021 ;
 ; Revision Name         ; CGoL-Simulation                       ;
 ; Top-level Entity Name ; Top                                   ;
 ; Family                ; MAX 10                                ;
@@ -53,23 +53,23 @@ https://fpgasoftware.intel.com/eula.
 +--------+---------+---------------+
 
 
-+-------------------------------------------------------------------------------------------+
-; Assembler Generated Files                                                                 ;
-+-------------------------------------------------------------------------------------------+
-; File Name                                                                                 ;
-+-------------------------------------------------------------------------------------------+
-; C:/Users/aquadri/Desktop/YorkU/EECS 3201/CGoL-Simulation/output_files/CGoL-Simulation.sof ;
-+-------------------------------------------------------------------------------------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Assembler Generated Files                                                                                                                                                        ;
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; File Name                                                                                                                                                                        ;
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; C:/Users/stani/Documents/York University/Courses/2021-2022/Fall/EECS 3201 Digital Logic Design/Conways-Game-of-Life-Simulation-on-de10Lite-FPGA/output_files/CGoL-Simulation.sof ;
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------+
-; Assembler Device Options: C:/Users/aquadri/Desktop/YorkU/EECS 3201/CGoL-Simulation/output_files/CGoL-Simulation.sof ;
-+----------------+----------------------------------------------------------------------------------------------------+
-; Option         ; Setting                                                                                            ;
-+----------------+----------------------------------------------------------------------------------------------------+
-; JTAG usercode  ; 0x00A7847B                                                                                         ;
-; Checksum       ; 0x00A7847B                                                                                         ;
-+----------------+----------------------------------------------------------------------------------------------------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Assembler Device Options: C:/Users/stani/Documents/York University/Courses/2021-2022/Fall/EECS 3201 Digital Logic Design/Conways-Game-of-Life-Simulation-on-de10Lite-FPGA/output_files/CGoL-Simulation.sof ;
++----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Option         ; Setting                                                                                                                                                                                   ;
++----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; JTAG usercode  ; 0x011BEDB5                                                                                                                                                                                ;
+; Checksum       ; 0x011BEDB5                                                                                                                                                                                ;
++----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
 +--------------------+
@@ -77,16 +77,16 @@ https://fpgasoftware.intel.com/eula.
 +--------------------+
 Info: *******************************************************************
 Info: Running Quartus Prime Assembler
-    Info: Version 20.1.0 Build 711 06/05/2020 Patches 0.02i SJ Lite Edition
-    Info: Processing started: Mon Dec 06 13:35:27 2021
+    Info: Version 20.1.1 Build 720 11/11/2020 Patches 1.02i SJ Lite Edition
+    Info: Processing started: Wed Dec 08 19:15:15 2021
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off CGoL-Simulation -c CGoL-Simulation
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (115031): Writing out detailed assembly data for power analysis
 Info (115030): Assembler is generating device programming files
 Info: Quartus Prime Assembler was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 594 megabytes
-    Info: Processing ended: Mon Dec 06 13:35:39 2021
-    Info: Elapsed time: 00:00:12
-    Info: Total CPU time (on all processors): 00:00:06
+    Info: Peak virtual memory: 4753 megabytes
+    Info: Processing ended: Wed Dec 08 19:15:24 2021
+    Info: Elapsed time: 00:00:09
+    Info: Total CPU time (on all processors): 00:00:09
 
 
