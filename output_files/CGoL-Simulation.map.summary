@@ -1,12 +1,12 @@
-Analysis & Synthesis Status : Successful - Mon Dec 06 13:31:25 2021
-Quartus Prime Version : 20.1.0 Build 711 06/05/2020 Patches 0.02i SJ Lite Edition
+Analysis & Synthesis Status : Successful - Wed Dec 08 19:03:56 2021
+Quartus Prime Version : 20.1.1 Build 720 11/11/2020 Patches 1.02i SJ Lite Edition
 Revision Name : CGoL-Simulation
 Top-level Entity Name : Top
 Family : MAX 10
-Total logic elements : 13,808
-    Total combinational functions : 13,756
-    Dedicated logic registers : 1,379
-Total registers : 1379
+Total logic elements : 25,421
+    Total combinational functions : 24,737
+    Dedicated logic registers : 2,594
+Total registers : 2594
 Total pins : 91
 Total virtual pins : 0
 Total memory bits : 0

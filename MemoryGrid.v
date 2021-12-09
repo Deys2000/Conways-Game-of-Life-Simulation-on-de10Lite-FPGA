@@ -4,7 +4,7 @@ module MemoryGrid(clk, clr, game_enable, Write_enable, Write_row, Write_col, Dat
 		parameter addr_len = 6;
 		input clk, clr, game_enable, Write_enable, Data_in;
 		input [addr_len-1:0] Write_row, Write_col;
-		input [1:0] preset_sel;
+		input [2:0] preset_sel;
 //		input [addr_len-1:0] Read_row, Read_col;
 		
 		output wire [nr*nc-1:0]states;
@@ -12,7 +12,7 @@ module MemoryGrid(clk, clr, game_enable, Write_enable, Write_row, Write_col, Dat
 //		output Data_out = states[n*Read_row+Read_col];
 	
 		wire [nr*nc-1:0]preset;
-		Presets #(nr, nc) pset(preset_sel, preset);
+		Presets #(nr, nc) pset(clk, preset_sel, preset);
 	
 		
 		genvar row, col;

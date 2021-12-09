@@ -1,0 +1,13 @@
+
+State Machine - |Top|spi_control:spi_ctrl|spi_state
+Name spi_state.IDLE spi_state.INTERACT spi_state.TRANSFER 
+spi_state.IDLE 0 0 0 
+spi_state.TRANSFER 1 0 1 
+spi_state.INTERACT 1 1 0 
+
+State Machine - |Top|spi_control:spi_ctrl|spi_serdes:serdes|state
+Name state.STALL state.READ state.WRITE state.IDLE 
+state.IDLE 0 0 0 0 
+state.WRITE 0 0 1 1 
+state.READ 0 1 0 1 
+state.STALL 1 0 0 1 

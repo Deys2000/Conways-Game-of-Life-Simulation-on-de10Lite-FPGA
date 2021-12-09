@@ -1,6 +1,6 @@
 Flow report for CGoL-Simulation
-Mon Dec 06 13:36:07 2021
-Quartus Prime Version 20.1.0 Build 711 06/05/2020 Patches 0.02i SJ Lite Edition
+Wed Dec 08 19:16:04 2021
+Quartus Prime Version 20.1.1 Build 720 11/11/2020 Patches 1.02i SJ Lite Edition
 
 
 ---------------------
@@ -41,17 +41,17 @@ https://fpgasoftware.intel.com/eula.
 +------------------------------------------------------------------------------------------------+
 ; Flow Summary                                                                                   ;
 +------------------------------------+-----------------------------------------------------------+
-; Flow Status                        ; Successful - Mon Dec 06 13:35:39 2021                     ;
-; Quartus Prime Version              ; 20.1.0 Build 711 06/05/2020 Patches 0.02i SJ Lite Edition ;
+; Flow Status                        ; Successful - Wed Dec 08 19:15:23 2021                     ;
+; Quartus Prime Version              ; 20.1.1 Build 720 11/11/2020 Patches 1.02i SJ Lite Edition ;
 ; Revision Name                      ; CGoL-Simulation                                           ;
 ; Top-level Entity Name              ; Top                                                       ;
 ; Family                             ; MAX 10                                                    ;
 ; Device                             ; 10M50DAF484C6GES                                          ;
 ; Timing Models                      ; Preliminary                                               ;
-; Total logic elements               ; 13,785 / 49,760 ( 28 % )                                  ;
-;     Total combinational functions  ; 13,757 / 49,760 ( 28 % )                                  ;
-;     Dedicated logic registers      ; 1,379 / 49,760 ( 3 % )                                    ;
-; Total registers                    ; 1379                                                      ;
+; Total logic elements               ; 24,878 / 49,760 ( 50 % )                                  ;
+;     Total combinational functions  ; 24,738 / 49,760 ( 50 % )                                  ;
+;     Dedicated logic registers      ; 2,594 / 49,760 ( 5 % )                                    ;
+; Total registers                    ; 2594                                                      ;
 ; Total pins                         ; 91 / 360 ( 25 % )                                         ;
 ; Total virtual pins                 ; 0                                                         ;
 ; Total memory bits                  ; 0 / 1,677,312 ( 0 % )                                     ;
@@ -67,7 +67,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 12/06/2021 13:24:58 ;
+; Start date & time ; 12/08/2021 18:56:15 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; CGoL-Simulation     ;
 +-------------------+---------------------+
@@ -78,7 +78,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------+----------------------------------------+-----------------+-------------+------------+
 ; Assignment Name                     ; Value                                  ; Default Value   ; Entity Name ; Section Id ;
 +-------------------------------------+----------------------------------------+-----------------+-------------+------------+
-; COMPILER_SIGNATURE_ID               ; 255421814186357.163881509825952        ; --              ; --          ; --         ;
+; COMPILER_SIGNATURE_ID               ; 1096726480518.163900777411376          ; --              ; --          ; --         ;
 ; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --              ; Top         ; Top        ;
 ; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family) ; --              ; Top         ; Top        ;
 ; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family) ; --              ; Top         ; Top        ;
@@ -92,24 +92,24 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:06:21     ; 1.0                     ; 5412 MB             ; 00:06:10                           ;
-; Fitter               ; 00:03:25     ; 1.2                     ; 1341 MB             ; 00:04:38                           ;
-; Assembler            ; 00:00:12     ; 1.0                     ; 594 MB              ; 00:00:06                           ;
-; Timing Analyzer      ; 00:00:26     ; 1.6                     ; 739 MB              ; 00:00:33                           ;
-; Total                ; 00:10:24     ; --                      ; --                  ; 00:11:27                           ;
+; Analysis & Synthesis ; 00:07:33     ; 1.0                     ; 6966 MB             ; 00:08:09                           ;
+; Fitter               ; 00:11:04     ; 1.4                     ; 5841 MB             ; 00:19:33                           ;
+; Assembler            ; 00:00:08     ; 1.0                     ; 4753 MB             ; 00:00:08                           ;
+; Timing Analyzer      ; 00:00:39     ; 2.7                     ; 4993 MB             ; 00:01:33                           ;
+; Total                ; 00:19:24     ; --                      ; --                  ; 00:29:23                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
-+-----------------------------------------------------------------------------------+
-; Flow OS Summary                                                                   ;
-+----------------------+------------------+-----------+------------+----------------+
-; Module Name          ; Machine Hostname ; OS Name   ; OS Version ; Processor type ;
-+----------------------+------------------+-----------+------------+----------------+
-; Analysis & Synthesis ; UIT-Dept-ST      ; Windows 7 ; 6.1        ; x86_64         ;
-; Fitter               ; UIT-Dept-ST      ; Windows 7 ; 6.1        ; x86_64         ;
-; Assembler            ; UIT-Dept-ST      ; Windows 7 ; 6.1        ; x86_64         ;
-; Timing Analyzer      ; UIT-Dept-ST      ; Windows 7 ; 6.1        ; x86_64         ;
-+----------------------+------------------+-----------+------------+----------------+
++------------------------------------------------------------------------------------+
+; Flow OS Summary                                                                    ;
++----------------------+------------------+------------+------------+----------------+
+; Module Name          ; Machine Hostname ; OS Name    ; OS Version ; Processor type ;
++----------------------+------------------+------------+------------+----------------+
+; Analysis & Synthesis ; LAPTOP-8RH41OM7  ; Windows 10 ; 10.0       ; x86_64         ;
+; Fitter               ; LAPTOP-8RH41OM7  ; Windows 10 ; 10.0       ; x86_64         ;
+; Assembler            ; LAPTOP-8RH41OM7  ; Windows 10 ; 10.0       ; x86_64         ;
+; Timing Analyzer      ; LAPTOP-8RH41OM7  ; Windows 10 ; 10.0       ; x86_64         ;
++----------------------+------------------+------------+------------+----------------+
 
 
 ------------
