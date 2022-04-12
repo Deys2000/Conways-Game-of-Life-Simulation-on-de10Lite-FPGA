@@ -1,0 +1,7 @@
+incremental_db/
+db/
+simulation/
+output_files/
+simulation/
+*.bak
+*.swp
